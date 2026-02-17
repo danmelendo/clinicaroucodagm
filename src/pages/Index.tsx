@@ -1,13 +1,47 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import Services from "@/components/Services";
+import Therapies from "@/components/Therapies";
+import Testimonials from "@/components/Testimonials";
+import BlogPreview from "@/components/BlogPreview";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Physiotherapy",
+  name: "Rouco Fisioterapia",
+  description:
+    "Clínica de fisioterapia especializada en tratamiento del dolor en San Fernando de Henares, Madrid.",
+  telephone: "+34604899279",
+  email: "info@roucofisioterapia.es",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "San Fernando de Henares",
+    addressRegion: "Madrid",
+    addressCountry: "ES",
+  },
+  url: "https://roucofisioterapia.es",
+};
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Navbar />
+      <main>
+        <Hero />
+        <Services />
+        <Therapies />
+        <Testimonials />
+        <BlogPreview />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 };
 

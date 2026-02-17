@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, Phone, Mail } from "lucide-react";
 
 const navLinks = [
@@ -6,7 +7,7 @@ const navLinks = [
   { label: "Servicios", href: "#servicios" },
   { label: "Terapias", href: "#terapias" },
   { label: "Testimonios", href: "#testimonios" },
-  { label: "Blog", href: "#blog" },
+  { label: "Blog", href: "/blog", isRoute: true },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -30,12 +31,15 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-              >
-                {link.label}
-              </a>
+              {link.isRoute ? (
+                <Link to={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                  {link.label}
+                </Link>
+              ) : (
+                <a href={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                  {link.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -52,13 +56,15 @@ const Navbar = () => {
           <ul className="flex flex-col p-4 gap-3">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </a>
+                {link.isRoute ? (
+                  <Link to={link.href} onClick={() => setOpen(false)} className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a href={link.href} onClick={() => setOpen(false)} className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
             <li className="pt-2 border-t border-border">

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -25,6 +27,22 @@ const jsonLd = {
 };
 
 const Index = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) {
+      return;
+    }
+
+    const id = hash.replace("#", "");
+    requestAnimationFrame(() => {
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: "auto", block: "start" });
+      }
+    });
+  }, [hash]);
+
   return (
     <>
       <script

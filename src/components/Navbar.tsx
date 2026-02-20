@@ -1,14 +1,14 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Phone, Mail, Instagram } from "lucide-react";
 
 const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Terapias", href: "#terapias" },
-  { label: "Testimonios", href: "#testimonios" },
+  { label: "Inicio", href: "/#inicio" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Clínica", href: "/#clinica" },
+  { label: "Testimonios", href: "/#testimonios" },
   { label: "Blog", href: "/blog", isRoute: true },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 const Navbar = () => {
@@ -23,9 +23,17 @@ const Navbar = () => {
         <a href="mailto:info@roucofisioterapia.es" className="flex items-center gap-1.5 hover:underline">
           <Mail className="w-3.5 h-3.5" /> info@roucofisioterapia.es
         </a>
+        <a
+          href="https://instagram.com/roucofisioterapia"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 hover:underline"
+        >
+          <Instagram className="w-3.5 h-3.5" /> @roucofisioterapia
+        </a>
       </div>
       <nav className="container flex items-center justify-between py-4">
-        <a href="#inicio" className="font-display text-2xl font-bold text-foreground">
+        <a href="/#inicio" className="font-display text-2xl font-bold text-foreground">
           Rouco<span className="text-primary">Fisioterapia</span>
         </a>
         <ul className="hidden md:flex items-center gap-8">
@@ -70,6 +78,14 @@ const Navbar = () => {
             <li className="pt-2 border-t border-border">
               <a href="tel:604899279" className="flex items-center gap-2 py-2 text-sm text-primary font-medium">
                 <Phone className="w-4 h-4" /> 604 899 279
+              </a>
+              <a
+                href="https://instagram.com/roucofisioterapia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 py-2 text-sm text-primary font-medium"
+              >
+                <Instagram className="w-4 h-4" /> Instagram
               </a>
             </li>
           </ul>

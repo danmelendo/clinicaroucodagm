@@ -32,10 +32,10 @@ const Testimonials = () => {
       <div className="container">
         <div className="text-center mb-16">
           <p className="text-sm font-medium uppercase tracking-widest text-primary mb-3">
-            Testimonios
+            No lo decimos nosotros
           </p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Lo que dicen de nosotros
+            Lo dicen nuestros pacientes
           </h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">

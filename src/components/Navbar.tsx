@@ -6,7 +6,8 @@ const navLinks = [
   { label: "Inicio", href: "/#inicio" },
   { label: "Servicios", href: "/#servicios" },
   { label: "Clínica", href: "/#clinica" },
-  { label: "Testimonios", href: "/#testimonios" },
+  { label: "Galería", href: "/#galeria" },
+  { label: "Sobre nosotros", href: "/#sobre-nosotros" },
   { label: "Blog", href: "/blog", isRoute: true },
   { label: "Contacto", href: "/#contacto" },
 ];

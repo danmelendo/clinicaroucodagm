@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Plus, Edit2, Trash2, LogOut, Eye, EyeOff } from "lucide-react";
+﻿import { useState, useEffect } from "react";
+import { Plus, Edit2, Trash2, LogOut, Eye, EyeOff, ImagePlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,6 +15,12 @@ import {
   adminLogin,
   adminLogout,
 } from "@/lib/blog";
+import {
+  addGalleryImage,
+  deleteGalleryImage,
+  getGalleryImages,
+  type GalleryImage,
+} from "@/lib/gallery";
 
 const emptyPost: BlogPost = {
   id: "",
@@ -28,15 +34,28 @@ const emptyPost: BlogPost = {
   published: false,
 };
 
+const fileToDataUrl = (file: File) => new Promise<string>((resolve, reject) => {
+  const reader = new FileReader();
+  reader.onload = () => resolve(String(reader.result));
+  reader.onerror = () => reject(new Error("No se pudo leer el archivo"));
+  reader.readAsDataURL(file);
+});
+
 const Admin = () => {
   const [authed, setAuthed] = useState(isAdminAuthenticated());
   const [password, setPassword] = useState("");
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [editing, setEditing] = useState<BlogPost | null>(null);
+  const [gallery, setGallery] = useState<GalleryImage[]>([]);
+  const [newImageUrl, setNewImageUrl] = useState("");
+  const [newImageAlt, setNewImageAlt] = useState("");
   const { toast } = useToast();
 
   useEffect(() => {
-    if (authed) setPosts(getPosts());
+    if (authed) {
+      setPosts(getPosts());
+      setGallery(getGalleryImages());
+    }
   }, [authed]);
 
   const handleLogin = (e: React.FormEvent) => {
@@ -67,6 +86,50 @@ const Admin = () => {
     deletePost(id);
     setPosts(getPosts());
     toast({ title: "Artículo eliminado" });
+  };
+
+  const handleAddImageByUrl = (e: React.FormEvent) => {
+    e.preventDefault();
+    const url = newImageUrl.trim();
+    if (!url) return;
+
+    addGalleryImage({
+      id: Date.now().toString(),
+      url,
+      alt: newImageAlt.trim() || "Imagen de la clínica",
+    });
+
+    setGallery(getGalleryImages());
+    setNewImageUrl("");
+    setNewImageAlt("");
+    toast({ title: "Imagen añadida a la galería" });
+  };
+
+  const handleAddImageByFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const dataUrl = await fileToDataUrl(file);
+      addGalleryImage({
+        id: Date.now().toString(),
+        url: dataUrl,
+        alt: newImageAlt.trim() || file.name || "Imagen de la clínica",
+      });
+      setGallery(getGalleryImages());
+      setNewImageAlt("");
+      toast({ title: "Imagen subida a la galería" });
+    } catch {
+      toast({ title: "No se pudo subir la imagen", variant: "destructive" });
+    } finally {
+      e.target.value = "";
+    }
+  };
+
+  const handleDeleteGalleryImage = (id: string) => {
+    deleteGalleryImage(id);
+    setGallery(getGalleryImages());
+    toast({ title: "Imagen eliminada de la galería" });
   };
 
   if (!authed) {
@@ -144,9 +207,9 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen bg-background py-8">
-      <div className="container max-w-4xl">
+      <div className="container max-w-5xl">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="font-display text-2xl font-bold text-foreground">Admin Blog</h1>
+          <h1 className="font-display text-2xl font-bold text-foreground">Admin Blog y Galería</h1>
           <div className="flex gap-2">
             <Button onClick={() => setEditing({ ...emptyPost })}>
               <Plus className="w-4 h-4 mr-1.5" /> Nuevo artículo
@@ -156,7 +219,9 @@ const Admin = () => {
             </Button>
           </div>
         </div>
-        <div className="space-y-3">
+
+        <section className="space-y-3 mb-12">
+          <h2 className="font-display text-xl font-bold text-foreground">Artículos del blog</h2>
           {posts.map((post) => (
             <div key={post.id} className="flex items-center justify-between p-4 bg-card rounded-lg border border-border">
               <div>
@@ -175,7 +240,61 @@ const Admin = () => {
               </div>
             </div>
           ))}
-        </div>
+        </section>
+
+        <section className="rounded-xl bg-card border border-border p-6 md:p-8">
+          <h2 className="font-display text-xl font-bold text-foreground mb-4">Galería</h2>
+
+          <form onSubmit={handleAddImageByUrl} className="grid gap-3 md:grid-cols-[1fr_1fr_auto] mb-4">
+            <Input
+              placeholder="URL de imagen"
+              value={newImageUrl}
+              onChange={(e) => setNewImageUrl(e.target.value)}
+            />
+            <Input
+              placeholder="Texto alternativo (opcional)"
+              value={newImageAlt}
+              onChange={(e) => setNewImageAlt(e.target.value)}
+            />
+            <Button type="submit">
+              <Plus className="w-4 h-4 mr-1.5" /> Añadir URL
+            </Button>
+          </form>
+
+          <div className="flex items-center gap-3 mb-6">
+            <Label htmlFor="gallery-file" className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border cursor-pointer hover:bg-muted/40 transition-colors">
+              <ImagePlus className="w-4 h-4" /> Subir foto
+            </Label>
+            <Input
+              id="gallery-file"
+              type="file"
+              accept="image/*"
+              onChange={handleAddImageByFile}
+              className="hidden"
+            />
+            <p className="text-xs text-muted-foreground">Las imágenes subidas se guardan en este navegador.</p>
+          </div>
+
+          {gallery.length === 0 && (
+            <p className="text-sm text-muted-foreground">No hay imágenes aún en la galería.</p>
+          )}
+
+          {gallery.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {gallery.map((img) => (
+                <article key={img.id} className="rounded-lg border border-border overflow-hidden bg-background">
+                  <img src={img.url} alt={img.alt} className="w-full h-40 object-cover" />
+                  <div className="p-3 flex items-center justify-between gap-2">
+                    <p className="text-xs text-muted-foreground truncate">{img.alt || "Sin descripción"}</p>
+                    <Button variant="ghost" size="icon" onClick={() => handleDeleteGalleryImage(img.id)}>
+                      <Trash2 className="w-4 h-4 text-destructive" />
+                    </Button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
       </div>
     </div>
   );

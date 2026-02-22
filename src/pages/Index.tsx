@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Therapies from "@/components/Therapies";
+import Gallery from "@/components/Gallery";
+import SobreNosotros from "@/components/SobreNosotros";
 import Testimonials from "@/components/Testimonials";
 import BlogPreview from "@/components/BlogPreview";
 import Contact from "@/components/Contact";
@@ -54,6 +56,8 @@ const Index = () => {
         <Hero />
         <Services />
         <Therapies />
+        <Gallery />
+        <SobreNosotros />
         <Testimonials />
         <BlogPreview />
         <Contact />

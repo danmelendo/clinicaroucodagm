@@ -1,6 +1,7 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Phone, Mail, Instagram } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Inicio", href: "/#inicio" },
@@ -34,8 +35,8 @@ const Navbar = () => {
         </a>
       </div>
       <nav className="container flex items-center justify-between py-4">
-        <a href="/#inicio" className="font-display text-2xl font-bold text-foreground">
-          Rouco<span className="text-primary">Fisioterapia</span>
+        <a href="/#inicio">
+          <img src={logo} alt="Rouco Fisioterapia" className="h-12 w-auto" />
         </a>
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (

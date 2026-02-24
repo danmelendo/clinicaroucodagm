@@ -1,10 +1,16 @@
+import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { getPublishedPosts } from "@/lib/blog";
+import { getPublishedPosts, type BlogPost } from "@/lib/blog";
 
 const BlogPreview = () => {
-  const posts = getPublishedPosts();
-  const latest = posts[0];
+  const [latest, setLatest] = useState<BlogPost | null>(null);
+
+  useEffect(() => {
+    getPublishedPosts()
+      .then((posts) => setLatest(posts[0] || null))
+      .catch(() => setLatest(null));
+  }, []);
 
   if (!latest) return null;
 
@@ -16,7 +22,7 @@ const BlogPreview = () => {
             Blog
           </p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Últimos artículos
+            Ultimos articulos
           </h2>
         </div>
         <article className="max-w-3xl mx-auto rounded-xl bg-card border border-border p-8 hover:shadow-lg transition-shadow">
@@ -33,7 +39,7 @@ const BlogPreview = () => {
             to={`/blog/${latest.slug}`}
             className="inline-flex items-center gap-1.5 text-primary font-medium text-sm hover:gap-3 transition-all"
           >
-            Leer más <ArrowRight className="w-4 h-4" />
+            Leer mas <ArrowRight className="w-4 h-4" />
           </Link>
         </article>
         <div className="text-center mt-8">
@@ -41,7 +47,7 @@ const BlogPreview = () => {
             to="/blog"
             className="inline-flex items-center gap-1.5 text-primary font-medium hover:gap-3 transition-all"
           >
-            Ver todos los artículos <ArrowRight className="w-4 h-4" />
+            Ver todos los articulos <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

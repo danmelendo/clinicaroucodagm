@@ -7,13 +7,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { servicesBySlug } from "@/lib/services";
+import { serviceBlockImagesBySlug, servicesBySlug } from "@/lib/services";
 import { Link, useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 
 const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? servicesBySlug[slug] : undefined;
+  const blockImages = slug ? (serviceBlockImagesBySlug[slug] ?? []) : [];
 
   if (!service) {
     return <NotFound />;
@@ -49,44 +50,64 @@ const ServiceDetail = () => {
           </div>
         </section>
 
-        <section className="py-10">
-          <div className="container max-w-4xl">
-            <RevealOnScroll>
-              <div className="rounded-xl border-2 border-dashed border-primary/35 bg-card/60 p-6 md:p-8">
-                <h2 className="font-display text-xl md:text-2xl font-semibold text-foreground mb-2">
-                  Zona preparada para carrusel de imágenes
-                </h2>
-                <p className="text-foreground/80 text-base md:text-lg leading-8">
-                  Inserta aquí el componente de carrusel cuando tengáis las imágenes del servicio.
-                </p>
-              </div>
-            </RevealOnScroll>
-          </div>
-        </section>
-
         <section className="py-8 md:py-12">
           <div className="container max-w-4xl space-y-12">
             {service.sections.map((section, sectionIndex) => (
               <RevealOnScroll key={section.title} delayMs={Math.min(sectionIndex * 50, 250)}>
-                <section>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-                    {section.title}
-                  </h2>
+                {blockImages[sectionIndex]?.src ? (
+                  <section className="grid gap-6 md:grid-cols-2 md:items-start">
+                    <div className={sectionIndex % 2 === 0 ? "md:order-1" : "md:order-2"}>
+                      <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+                        {section.title}
+                      </h2>
 
-                  {section.paragraphs?.map((paragraph) => (
-                    <p key={paragraph} className="text-foreground/85 text-base md:text-lg leading-8 mb-4">
-                      {paragraph}
-                    </p>
-                  ))}
-
-                  {section.bullets && (
-                    <ul className="list-disc pl-6 space-y-3 text-foreground/85 text-base md:text-lg leading-8">
-                      {section.bullets.map((bullet) => (
-                        <li key={bullet}>{bullet}</li>
+                      {section.paragraphs?.map((paragraph) => (
+                        <p key={paragraph} className="text-foreground/85 text-base md:text-lg leading-8 mb-4">
+                          {paragraph}
+                        </p>
                       ))}
-                    </ul>
-                  )}
-                </section>
+
+                      {section.bullets && (
+                        <ul className="list-disc pl-6 space-y-3 text-foreground/85 text-base md:text-lg leading-8">
+                          {section.bullets.map((bullet) => (
+                            <li key={bullet}>{bullet}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+
+                    <div className={sectionIndex % 2 === 0 ? "md:order-2" : "md:order-1"}>
+                      <div className="overflow-hidden rounded-xl border border-border bg-card">
+                        <img
+                          src={blockImages[sectionIndex].src}
+                          alt={blockImages[sectionIndex].alt}
+                          className="h-60 md:h-72 w-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </section>
+                ) : (
+                  <section>
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+                      {section.title}
+                    </h2>
+
+                    {section.paragraphs?.map((paragraph) => (
+                      <p key={paragraph} className="text-foreground/85 text-base md:text-lg leading-8 mb-4">
+                        {paragraph}
+                      </p>
+                    ))}
+
+                    {section.bullets && (
+                      <ul className="list-disc pl-6 space-y-3 text-foreground/85 text-base md:text-lg leading-8">
+                        {section.bullets.map((bullet) => (
+                          <li key={bullet}>{bullet}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                )}
               </RevealOnScroll>
             ))}
 

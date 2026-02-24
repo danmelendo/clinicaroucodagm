@@ -1,11 +1,16 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Tag } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { getPublishedPosts } from "@/lib/blog";
+import { getPublishedPosts, type BlogPost } from "@/lib/blog";
 
 const Blog = () => {
-  const posts = getPublishedPosts();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    getPublishedPosts().then(setPosts).catch(() => setPosts([]));
+  }, []);
 
   return (
     <>
@@ -17,7 +22,7 @@ const Blog = () => {
               Blog de Fisioterapia
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Artículos sobre salud, terapias y bienestar escritos por nuestros
+              Articulos sobre salud, terapias y bienestar escritos por nuestros
               fisioterapeutas especializados en San Fernando de Henares.
             </p>
           </div>
@@ -27,7 +32,7 @@ const Blog = () => {
           <div className="container max-w-4xl">
             {posts.length === 0 && (
               <p className="text-center text-muted-foreground">
-                No hay artículos publicados aún.
+                No hay articulos publicados aun.
               </p>
             )}
             <div className="space-y-8">
@@ -56,7 +61,7 @@ const Blog = () => {
                     to={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-1.5 text-primary font-medium text-sm hover:gap-3 transition-all"
                   >
-                    Leer más <ArrowRight className="w-4 h-4" />
+                    Leer mas <ArrowRight className="w-4 h-4" />
                   </Link>
                 </article>
               ))}

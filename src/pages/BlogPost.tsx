@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { getPostBySlug } from "@/lib/blog";
+import { getPostBySlug, type BlogPost as BlogPostModel } from "@/lib/blog";
 
 const renderMarkdown = (content: string) => {
   return content.split("\n\n").map((block, i) => {
@@ -51,8 +52,21 @@ const boldify = (text: string) =>
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const post = slug ? getPostBySlug(slug) : undefined;
+  const [post, setPost] = useState<BlogPostModel | undefined>();
+  const [loaded, setLoaded] = useState(false);
 
+  useEffect(() => {
+    if (!slug) {
+      setLoaded(true);
+      return;
+    }
+
+    getPostBySlug(slug)
+      .then(setPost)
+      .finally(() => setLoaded(true));
+  }, [slug]);
+
+  if (!loaded) return null;
   if (!post || !post.published) return <Navigate to="/blog" replace />;
 
   const jsonLd = {

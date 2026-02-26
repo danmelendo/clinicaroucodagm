@@ -13,55 +13,113 @@ export type SendChatInput = {
   history: ChatMessage[];
 };
 
-export interface ChatGateway {
-  sendMessage: (input: SendChatInput) => Promise<string>;
-}
-
-const WEBHOOK_URL = import.meta.env.VITE_CHAT_WEBHOOK_URL as string | undefined;
-
-const localGateway: ChatGateway = {
-  async sendMessage() {
-    return "Gracias por tu mensaje. El asistente conversacional se conectara aqui en una siguiente fase.";
-  },
+type WebhookPayload = {
+  user: string;
+  agent: string;
+  message: string;
+  source: "web-chat";
 };
 
-const webhookGateway: ChatGateway = {
-  async sendMessage(input) {
-    if (!WEBHOOK_URL) {
-      throw new Error("Webhook no configurado");
-    }
+const WEBHOOK_URL = (import.meta.env.VITE_CHAT_WEBHOOK_URL as string | undefined)?.trim();
+const WEBHOOK_TOKEN = (import.meta.env.VITE_CHAT_WEBHOOK_TOKEN as string | undefined)?.trim();
+const WEBHOOK_TIMEOUT_MS = Number(import.meta.env.VITE_CHAT_WEBHOOK_TIMEOUT_MS || 15000);
 
-    const response = await fetch(WEBHOOK_URL, {
+const extractReply = (payload: unknown): string | null => {
+  if (payload === null || payload === undefined) return null;
+  if (typeof payload === "string") return payload.trim() || null;
+  if (typeof payload === "number" || typeof payload === "boolean") return String(payload);
+
+  if (Array.isArray(payload)) {
+    for (const item of payload) {
+      const nested = extractReply(item);
+      if (nested) return nested;
+    }
+    return null;
+  }
+
+  if (typeof payload === "object") {
+    const data = payload as Record<string, unknown>;
+    const keys = [
+      "reply",
+      "message",
+      "text",
+      "Text",
+      "texto",
+      "Texto",
+      "output",
+      "response",
+      "answer",
+      "content",
+      "data",
+    ];
+    for (const key of keys) {
+      const nested = extractReply(data[key]);
+      if (nested) return nested;
+    }
+  }
+
+  return null;
+};
+
+const parseResponseBody = async (response: Response): Promise<unknown> => {
+  const raw = await response.text();
+  const trimmed = raw.trim();
+  if (!trimmed) return null;
+
+  try {
+    return JSON.parse(trimmed) as unknown;
+  } catch {
+    return trimmed;
+  }
+};
+
+export const chatConfig = {
+  webhookUrl: WEBHOOK_URL || "",
+  enabled: Boolean(WEBHOOK_URL),
+};
+
+export async function sendChatMessage(input: SendChatInput): Promise<string> {
+  if (!WEBHOOK_URL) {
+    throw new Error("Webhook no configurado. Define VITE_CHAT_WEBHOOK_URL en .env");
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), WEBHOOK_TIMEOUT_MS);
+
+  const payload: WebhookPayload = {
+    user: input.message,
+    agent: "",
+    message: input.message,
+    source: "web-chat",
+  };
+
+  let response: Response;
+  try {
+    response = await fetch(WEBHOOK_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        ...(WEBHOOK_TOKEN ? { Authorization: `Bearer ${WEBHOOK_TOKEN}` } : {}),
       },
-      body: JSON.stringify({
-        sessionId: input.sessionId,
-        message: input.message,
-        history: input.history.map((item) => ({
-          role: item.role,
-          content: item.content,
-          createdAt: item.createdAt,
-        })),
-      }),
+      body: JSON.stringify(payload),
+      signal: controller.signal,
     });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Error desconocido";
+    throw new Error(`No se pudo enviar al webhook: ${message}`);
+  } finally {
+    clearTimeout(timeout);
+  }
 
-    if (!response.ok) {
-      throw new Error("Error al invocar webhook");
-    }
+  if (!response.ok) {
+    throw new Error(`Webhook respondio con estado ${response.status}`);
+  }
 
-    const payload = (await response.json()) as
-      | { reply?: string; message?: string; text?: string }
-      | undefined;
+  const body = await parseResponseBody(response);
+  const reply = extractReply(body);
+  if (!reply) {
+    throw new Error("Webhook sin contenido de respuesta");
+  }
 
-    return (
-      payload?.reply ||
-      payload?.message ||
-      payload?.text ||
-      "Respuesta recibida sin contenido"
-    );
-  },
-};
-
-export const chatGateway: ChatGateway = WEBHOOK_URL ? webhookGateway : localGateway;
+  return reply;
+}

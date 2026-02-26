@@ -109,3 +109,42 @@
     font-family: var(--font-body);
   }
 }
+
+.chat-loader {
+  position: relative;
+  width: 1.8rem;
+  height: 1.8rem;
+  animation: chat-loader-spin 1.2s linear infinite;
+}
+
+.chat-loader-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 9999px;
+  background: hsl(var(--primary));
+  transform-origin: 0 0;
+}
+
+.chat-loader-dot-1 {
+  transform: rotate(0deg) translate(0, -0.65rem);
+}
+
+.chat-loader-dot-2 {
+  transform: rotate(120deg) translate(0, -0.65rem);
+}
+
+.chat-loader-dot-3 {
+  transform: rotate(240deg) translate(0, -0.65rem);
+}
+
+@keyframes chat-loader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

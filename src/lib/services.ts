@@ -19,6 +19,11 @@ export type ServiceDetail = {
   faq: ServiceFaq[];
 };
 
+export type ServiceBlockImage = {
+  src: string;
+  alt: string;
+};
+
 const placeholderSections: ServiceSection[] = [
   {
     title: "¿Qué es este tratamiento?",
@@ -826,3 +831,61 @@ export const servicesCatalog: ServiceDetail[] = [
 export const servicesBySlug = Object.fromEntries(
   servicesCatalog.map((service) => [service.slug, service]),
 ) as Record<string, ServiceDetail>;
+
+export const serviceBlockImagesBySlug: Record<string, ServiceBlockImage[]> = {
+  electropuncion: [
+    { src: "/images/servicios/electropun/01.jpg", alt: "Electropunción - imagen 1" },
+    { src: "/images/servicios/electropun/02.jpg", alt: "Electropunción - imagen 2" },
+    { src: "/images/servicios/electropun/03.jpg", alt: "Electropunción - imagen 3" },
+    { src: "/images/servicios/electropun/04.jpg", alt: "Electropunción - imagen 4" },
+    { src: "/images/servicios/electropun/05.jpg", alt: "Electropunción - imagen 5" },
+  ],
+  kinesiotaping: [
+    { src: "/images/servicios/kinesio/01.jpg", alt: "Kinesiotaping - imagen 1" },
+    { src: "/images/servicios/kinesio/02.jpg", alt: "Kinesiotaping - imagen 2" },
+    { src: "/images/servicios/kinesio/03.jpg", alt: "Kinesiotaping - imagen 3" },
+    { src: "/images/servicios/kinesio/04.jpg", alt: "Kinesiotaping - imagen 4" },
+  ],
+  "ejercicio-terapeutico": [
+    { src: "/images/servicios/ejterapeu/01.jpg", alt: "Ejercicio terapéutico - imagen 1" },
+    { src: "/images/servicios/ejterapeu/02.jpg", alt: "Ejercicio terapéutico - imagen 2" },
+    { src: "/images/servicios/ejterapeu/03.jpg", alt: "Ejercicio terapéutico - imagen 3" },
+    { src: "/images/servicios/ejterapeu/04.jpg", alt: "Ejercicio terapéutico - imagen 4" },
+  ],
+  "terapia-manual": [
+    { src: "/images/servicios/tepmanua/01.jpg", alt: "Terapia manual - imagen 1" },
+    { src: "/images/servicios/tepmanua/02.jpg", alt: "Terapia manual - imagen 2" },
+    { src: "/images/servicios/tepmanua/03.jpg", alt: "Terapia manual - imagen 3" },
+    { src: "/images/servicios/tepmanua/04.jpg", alt: "Terapia manual - imagen 4" },
+  ],
+  "puncion-seca": [
+    { src: "/images/servicios/punseca/01.jpg", alt: "Punción seca - imagen 1" },
+    { src: "/images/servicios/punseca/02.jpg", alt: "Punción seca - imagen 2" },
+    { src: "/images/servicios/punseca/03.jpg", alt: "Punción seca - imagen 3" },
+    { src: "/images/servicios/punseca/04.jpg", alt: "Punción seca - imagen 4" },
+  ],
+  neuromodulacion: [
+    { src: "/images/servicios/neuromod/01.jpg", alt: "Neuromodulación - imagen 1" },
+    { src: "/images/servicios/neuromod/02.jpg", alt: "Neuromodulación - imagen 2" },
+    { src: "/images/servicios/neuromod/03.jpg", alt: "Neuromodulación - imagen 3" },
+    { src: "/images/servicios/neuromod/04.jpg", alt: "Neuromodulación - imagen 4" },
+  ],
+  "educacion-terapeutica": [
+    { src: "/images/servicios/edterap/01.jpg", alt: "Educación terapéutica - imagen 1" },
+    { src: "/images/servicios/edterap/02.jpg", alt: "Educación terapéutica - imagen 2" },
+    { src: "/images/servicios/edterap/03.jpg", alt: "Educación terapéutica - imagen 3" },
+    { src: "/images/servicios/edterap/04.jpg", alt: "Educación terapéutica - imagen 4" },
+  ],
+  epte: [
+    { src: "/images/servicios/epte/01.jpg", alt: "EPTE - imagen 1" },
+    { src: "/images/servicios/epte/02.jpg", alt: "EPTE - imagen 2" },
+    { src: "/images/servicios/epte/03.jpg", alt: "EPTE - imagen 3" },
+    { src: "/images/servicios/epte/04.jpg", alt: "EPTE - imagen 4" },
+  ],
+  ecografia: [
+    { src: "/images/servicios/eco/01.jpg", alt: "Ecografía - imagen 1" },
+    { src: "/images/servicios/eco/02.jpg", alt: "Ecografía - imagen 2" },
+    { src: "/images/servicios/eco/03.jpg", alt: "Ecografía - imagen 3" },
+    { src: "/images/servicios/eco/04.jpg", alt: "Ecografía - imagen 4" },
+  ],
+};

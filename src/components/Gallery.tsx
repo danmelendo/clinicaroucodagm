@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { getGalleryImages, type GalleryImage } from "@/lib/gallery";
 import RevealOnScroll from "@/components/RevealOnScroll";
@@ -8,11 +8,7 @@ const Gallery = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    setImages(getGalleryImages());
-
-    const onStorage = () => setImages(getGalleryImages());
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
+    getGalleryImages().then(setImages).catch(() => setImages([]));
   }, []);
 
   const hasImages = images.length > 0;
@@ -34,7 +30,7 @@ const Gallery = () => {
         <RevealOnScroll>
           <div className="text-center mb-16">
             <p className="text-sm font-medium uppercase tracking-widest text-primary mb-3">
-              Galería
+              Galeria
             </p>
             <h4 className="font-display text-3xl md:text-4xl font-bold text-foreground">
               Conocenos antes de visitarnos
@@ -46,7 +42,8 @@ const Gallery = () => {
           <RevealOnScroll>
             <div className="max-w-4xl mx-auto rounded-xl border-2 border-dashed border-primary/35 bg-card/70 p-10 text-center">
               <p className="text-foreground/80 text-base md:text-lg leading-8">
-                Esta galería está lista para recibir imágenes desde el panel de administración.
+                Galeria vacia. Añade imagenes en src/content/gallery/images.ts
+                y guarda los archivos en public/images/gallery.
               </p>
             </div>
           </RevealOnScroll>
@@ -68,7 +65,7 @@ const Gallery = () => {
                     loading="lazy"
                   />
                   <div className="p-4">
-                    <p className="text-sm text-muted-foreground">{image.alt || "Imagen de la clínica"}</p>
+                    <p className="text-sm text-muted-foreground">{image.alt || "Imagen de la clinica"}</p>
                   </div>
                 </button>
               </RevealOnScroll>

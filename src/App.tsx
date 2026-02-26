@@ -10,6 +10,7 @@ import BlogPost from "./pages/BlogPost";
 import Admin from "./pages/Admin";
 import ServiceDetail from "./pages/ServiceDetail";
 import NotFound from "./pages/NotFound";
+import ChatWidget from "./components/ChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/kinesiotaping" element={<Navigate to="/servicios/kinesiotaping" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ChatWidget />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

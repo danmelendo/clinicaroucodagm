@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getGalleryImages, type GalleryImage } from "@/lib/gallery";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 const Gallery = () => {
   const [images, setImages] = useState<GalleryImage[]>([]);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     getGalleryImages().then(setImages).catch(() => setImages([]));
   }, []);
 
   const hasImages = images.length > 0;
-  const selected = openIndex !== null ? images[openIndex] : null;
+  const selected = hasImages ? images[currentIndex] : null;
 
   const goPrev = () => {
-    if (openIndex === null) return;
-    setOpenIndex((openIndex - 1 + images.length) % images.length);
+    if (!hasImages) return;
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   const goNext = () => {
-    if (openIndex === null) return;
-    setOpenIndex((openIndex + 1) % images.length);
+    if (!hasImages) return;
+    setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
   return (
@@ -49,71 +49,48 @@ const Gallery = () => {
           </RevealOnScroll>
         )}
 
-        {hasImages && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {images.map((image, index) => (
-              <RevealOnScroll key={image.id} delayMs={Math.min(index * 60, 240)}>
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(index)}
-                  className="group w-full overflow-hidden rounded-xl border border-border bg-card text-left"
-                >
-                  <img
-                    src={image.url}
-                    alt={image.alt}
-                    className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="p-4">
-                    <p className="text-sm text-muted-foreground">{image.alt || "Imagen de la clinica"}</p>
-                  </div>
-                </button>
-              </RevealOnScroll>
-            ))}
-          </div>
+        {hasImages && selected && (
+          <RevealOnScroll>
+            <div className="max-w-3xl mx-auto">
+              <div className="relative overflow-hidden rounded-xl border border-border bg-card">
+                <img
+                  src={selected.url}
+                  alt={selected.alt}
+                  className="w-full h-[260px] md:h-[420px] object-contain bg-background"
+                  loading="lazy"
+                />
+                {images.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onMouseDown={(event) => event.preventDefault()}
+                      onClick={goPrev}
+                      className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-black/55 p-2 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.9)] hover:bg-black/70"
+                      aria-label="Imagen anterior"
+                    >
+                      <ChevronLeft className="w-6 h-6" />
+                    </button>
+                    <button
+                      type="button"
+                      onMouseDown={(event) => event.preventDefault()}
+                      onClick={goNext}
+                      className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-black/55 p-2 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.9)] hover:bg-black/70"
+                      aria-label="Imagen siguiente"
+                    >
+                      <ChevronRight className="w-6 h-6" />
+                    </button>
+                  </>
+                )}
+              </div>
+              <div className="mt-2 text-right">
+                <p className="text-sm text-muted-foreground">
+                  {currentIndex + 1} / {images.length}
+                </p>
+              </div>
+            </div>
+          </RevealOnScroll>
         )}
       </div>
-
-      {selected && (
-        <div className="fixed inset-0 z-[100] bg-black/85 flex items-center justify-center p-4">
-          <button
-            type="button"
-            onClick={() => setOpenIndex(null)}
-            className="absolute top-5 right-5 text-white/90 hover:text-white"
-            aria-label="Cerrar visualizador"
-          >
-            <X className="w-8 h-8" />
-          </button>
-
-          {images.length > 1 && (
-            <button
-              type="button"
-              onClick={goPrev}
-              className="absolute left-4 md:left-8 text-white/90 hover:text-white"
-              aria-label="Imagen anterior"
-            >
-              <ChevronLeft className="w-10 h-10" />
-            </button>
-          )}
-
-          <img
-            src={selected.url}
-            alt={selected.alt}
-            className="max-h-[85vh] max-w-[92vw] object-contain rounded-lg"
-          />
-
-          {images.length > 1 && (
-            <button
-              type="button"
-              onClick={goNext}
-              className="absolute right-4 md:right-8 text-white/90 hover:text-white"
-              aria-label="Imagen siguiente"
-            >
-              <ChevronRight className="w-10 h-10" />
-            </button>
-          )}
-        </div>
-      )}
     </section>
   );
 };

@@ -1,4 +1,28 @@
-﻿const SobreNosotros = () => {
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const credentialsImages = [
+  { src: "/images/gallery/Grado.jpg", alt: "Titulo de Grado en Fisioterapia" },
+  { src: "/images/gallery/Master.jpg", alt: "Titulo de Master en Fisioterapia" },
+  { src: "/images/gallery/Diploma1.jpg", alt: "Diploma 1" },
+  { src: "/images/gallery/Diploma2.jpg", alt: "Diploma 2" },
+  { src: "/images/gallery/Diploma3.jpg", alt: "Diploma 3" },
+  { src: "/images/gallery/Diploma4.jpg", alt: "Diploma 4" },
+  { src: "/images/gallery/Diploma5.jpg", alt: "Diploma 5" },
+];
+
+const SobreNosotros = () => {
+  const [credentialIndex, setCredentialIndex] = useState(0);
+  const selectedCredential = credentialsImages[credentialIndex];
+
+  const goPrevCredential = () => {
+    setCredentialIndex((prev) => (prev - 1 + credentialsImages.length) % credentialsImages.length);
+  };
+
+  const goNextCredential = () => {
+    setCredentialIndex((prev) => (prev + 1) % credentialsImages.length);
+  };
+
   return (
     <section id="sobre-nosotros" className="py-20 md:py-28 bg-background">
       <div className="container max-w-5xl">
@@ -54,11 +78,45 @@
               Primera consulta + valoración gratuita.
             </p>
           </article>
-          
+
           <article className="rounded-xl bg-card border border-border p-8 md:p-10">
             <h3 className="font-display text-2xl font-bold text-foreground mb-4">Graduados en Fisioterapia</h3>
-            <div className="rounded-xl border-2 border-dashed border-primary/35 bg-background/70 p-8 md:p-10 text-center mb-6">
-              <p className="text-foreground/80 font-medium">Espacio reservado para foto del equipo</p>
+            <div className="rounded-xl border border-border bg-background/70 p-4 md:p-5 mb-6">
+              <div className="relative overflow-hidden rounded-lg border border-border bg-card">
+                <img
+                  src={selectedCredential.src}
+                  alt={selectedCredential.alt}
+                  className="w-full h-[260px] md:h-[420px] object-contain bg-background"
+                  loading="lazy"
+                />
+                {credentialsImages.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onMouseDown={(event) => event.preventDefault()}
+                      onClick={goPrevCredential}
+                      className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-black/55 p-2 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.9)] hover:bg-black/70"
+                      aria-label="Titulo anterior"
+                    >
+                      <ChevronLeft className="w-6 h-6" />
+                    </button>
+                    <button
+                      type="button"
+                      onMouseDown={(event) => event.preventDefault()}
+                      onClick={goNextCredential}
+                      className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-black/55 p-2 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.9)] hover:bg-black/70"
+                      aria-label="Titulo siguiente"
+                    >
+                      <ChevronRight className="w-6 h-6" />
+                    </button>
+                  </>
+                )}
+              </div>
+              <div className="mt-2 text-right">
+                <p className="text-sm text-muted-foreground">
+                  {credentialIndex + 1} / {credentialsImages.length}
+                </p>
+              </div>
             </div>
             <h4 className="font-display text-xl font-semibold text-foreground mt-6 mb-2">Hablemos de ti</h4>
             <p className="text-foreground/85 text-base md:text-lg leading-8 mb-4">

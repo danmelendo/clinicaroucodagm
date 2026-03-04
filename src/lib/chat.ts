@@ -21,8 +21,27 @@ type WebhookPayload = {
 };
 
 const WEBHOOK_URL = (import.meta.env.VITE_CHAT_WEBHOOK_URL as string | undefined)?.trim();
+const WEBHOOK_URL_HTTP_FALLBACK = (
+  import.meta.env.VITE_CHAT_WEBHOOK_URL_HTTP_FALLBACK as string | undefined
+)?.trim();
 const WEBHOOK_TOKEN = (import.meta.env.VITE_CHAT_WEBHOOK_TOKEN as string | undefined)?.trim();
 const WEBHOOK_TIMEOUT_MS = Number(import.meta.env.VITE_CHAT_WEBHOOK_TIMEOUT_MS || 15000);
+
+const resolveWebhookUrl = (): string => {
+  const isHttpPage = typeof window !== "undefined" && window.location.protocol === "http:";
+
+  if (isHttpPage && WEBHOOK_URL_HTTP_FALLBACK) {
+    return WEBHOOK_URL_HTTP_FALLBACK;
+  }
+
+  if (WEBHOOK_URL) {
+    return WEBHOOK_URL;
+  }
+
+  return WEBHOOK_URL_HTTP_FALLBACK || "";
+};
+
+const EFFECTIVE_WEBHOOK_URL = resolveWebhookUrl();
 
 const extractReply = (payload: unknown): string | null => {
   if (payload === null || payload === undefined) return null;
@@ -74,13 +93,15 @@ const parseResponseBody = async (response: Response): Promise<unknown> => {
 };
 
 export const chatConfig = {
-  webhookUrl: WEBHOOK_URL || "",
-  enabled: Boolean(WEBHOOK_URL),
+  webhookUrl: EFFECTIVE_WEBHOOK_URL,
+  enabled: Boolean(EFFECTIVE_WEBHOOK_URL),
 };
 
 export async function sendChatMessage(input: SendChatInput): Promise<string> {
-  if (!WEBHOOK_URL) {
-    throw new Error("Webhook no configurado. Define VITE_CHAT_WEBHOOK_URL en .env");
+  if (!EFFECTIVE_WEBHOOK_URL) {
+    throw new Error(
+      "Webhook no configurado. Define VITE_CHAT_WEBHOOK_URL (y opcionalmente VITE_CHAT_WEBHOOK_URL_HTTP_FALLBACK) en .env",
+    );
   }
 
   const controller = new AbortController();
@@ -95,7 +116,7 @@ export async function sendChatMessage(input: SendChatInput): Promise<string> {
 
   let response: Response;
   try {
-    response = await fetch(WEBHOOK_URL, {
+    response = await fetch(EFFECTIVE_WEBHOOK_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

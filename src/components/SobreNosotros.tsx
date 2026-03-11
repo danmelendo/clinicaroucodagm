@@ -1,28 +1,4 @@
-import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const credentialsImages = [
-  { src: "/images/gallery/Grado.jpg", alt: "Titulo de Grado en Fisioterapia" },
-  { src: "/images/gallery/Master.jpg", alt: "Titulo de Master en Fisioterapia" },
-  { src: "/images/gallery/Diploma1.jpg", alt: "Diploma 1" },
-  { src: "/images/gallery/Diploma2.jpg", alt: "Diploma 2" },
-  { src: "/images/gallery/Diploma3.jpg", alt: "Diploma 3" },
-  { src: "/images/gallery/Diploma4.jpg", alt: "Diploma 4" },
-  { src: "/images/gallery/Diploma5.jpg", alt: "Diploma 5" },
-];
-
 const SobreNosotros = () => {
-  const [credentialIndex, setCredentialIndex] = useState(0);
-  const selectedCredential = credentialsImages[credentialIndex];
-
-  const goPrevCredential = () => {
-    setCredentialIndex((prev) => (prev - 1 + credentialsImages.length) % credentialsImages.length);
-  };
-
-  const goNextCredential = () => {
-    setCredentialIndex((prev) => (prev + 1) % credentialsImages.length);
-  };
-
   return (
     <section id="sobre-nosotros" className="py-20 md:py-28 bg-background">
       <div className="container max-w-5xl">

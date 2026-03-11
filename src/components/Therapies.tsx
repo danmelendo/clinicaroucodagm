@@ -34,7 +34,7 @@ const clinicAreas: ClinicArea[] = [
   {
     title: "Sala de Pilates y Gimnasio",
     text: "En RoucoFisioterapia, ofrecemos una sala de gimnasio diseñada para la práctica de pilates y ejercicios de rehabilitación. Con capacidad para hasta 10 personas, la sala está equipada con todo el material necesario: colchonetas, pelotas, bandas elásticas y otros elementos específicos para las sesiones. Este espacio permite a nuestros pacientes realizar ejercicios guiados en un ambiente seguro y funcional, ideal para fortalecer su salud y bienestar.",
-     photo: "/images/gallery/Sala2.jpg",
+     photo: "/images/gallery/Galeria15.jpeg",
     // photoAlt: "Sala de pilates y gimnasio",
     photoPlaceholder: "Espacio reservado para fotos de la Sala de Pilates y Gimnasio",
   },

@@ -30,4 +30,9 @@ export const localGalleryImages: GalleryImage[] = [
   { id: "galeria-8", url: "/images/gallery/Galeria8.jpeg", alt: "Tratamiento con kinesiotape" },
   { id: "galeria-9", url: "/images/gallery/Galeria9.jpeg", alt: "Masaje terapéutico" },
   { id: "galeria-10", url: "/images/gallery/Galeria10.jpeg", alt: "Electropunción" },
+  { id: "galeria-11", url: "/images/gallery/Galeria11.jpeg", alt: "Tratamiento de rodilla" },
+  { id: "galeria-12", url: "/images/gallery/Galeria12.jpeg", alt: "Valoración de pie" },
+  { id: "galeria-13", url: "/images/gallery/Galeria13.jpeg", alt: "Tratamiento con punción seca" },
+  { id: "galeria-14", url: "/images/gallery/Galeria14.jpeg", alt: "Fisioterapia deportiva" },
+  { id: "galeria-15", url: "/images/gallery/Galeria15.jpeg", alt: "Sala de ejercicios" },
 ];

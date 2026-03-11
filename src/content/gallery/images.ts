@@ -10,8 +10,6 @@ export const localGalleryImages: GalleryImage[] = [
   { id: "paciente", url: "/images/gallery/Paciente.jpg", alt: "Paciente" },
   { id: "paciente-2", url: "/images/gallery/Paciente2.jpg", alt: "Paciente 2" },
   { id: "paciente-3", url: "/images/gallery/Paciente3.jpg", alt: "Paciente 3" },
-  { id: "pilates", url: "/images/gallery/Pilates.jpg", alt: "Pilates" },
-  { id: "powerexplosive", url: "/images/gallery/Powerexplosive.jpg", alt: "Power Explosive" },
   { id: "recepcion", url: "/images/gallery/Recepcion.jpg", alt: "Recepción" },
   { id: "recepcion-2", url: "/images/gallery/Recepcion2.jpg", alt: "Recepción 2" },
   { id: "rouco", url: "/images/gallery/Rouco.jpg", alt: "Rouco" },

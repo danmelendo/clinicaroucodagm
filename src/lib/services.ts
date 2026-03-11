@@ -826,6 +826,86 @@ export const servicesCatalog: ServiceDetail[] = [
     ],
     faq: [],
   },
+  {
+    slug: "diatermia",
+    title: "Diatermia",
+    cardDescription: "Radiofrecuencia capacitiva y resistiva para acelerar la recuperación tisular.",
+    intro:
+      "La diatermia es una técnica de fisioterapia que utiliza corrientes de radiofrecuencia para generar calor en los tejidos profundos del cuerpo. En Rouco Fisioterapia, empleamos la diatermia capacitiva y resistiva como herramienta clave para acelerar la recuperación, reducir el dolor y mejorar la funcionalidad de nuestros pacientes en San Fernando de Henares, Coslada, Torrejón de Ardoz y localidades cercanas de Madrid.",
+    ctaLabel: "RESERVA TU CITA",
+    sections: [
+      {
+        title: "¿Qué es la diatermia?",
+        paragraphs: [
+          "La diatermia, también conocida como tecarterapia o radiofrecuencia terapéutica, es un tratamiento que utiliza corrientes electromagnéticas de alta frecuencia para generar un aumento controlado de la temperatura en los tejidos. Existen dos modalidades principales:",
+        ],
+        bullets: [
+          "Diatermia capacitiva: Actúa sobre tejidos blandos con alto contenido en agua, como músculos, tendones y fascias.",
+          "Diatermia resistiva: Penetra más profundamente y actúa sobre tejidos con mayor resistencia, como huesos, articulaciones y ligamentos.",
+        ],
+      },
+      {
+        title: "Beneficios de la diatermia en fisioterapia",
+        bullets: [
+          "Aceleración de la recuperación tisular: Estimula la regeneración celular y la cicatrización de tejidos dañados.",
+          "Alivio del dolor: Reduce la sensibilidad dolorosa y relaja la musculatura de forma profunda.",
+          "Mejora de la circulación sanguínea: Favorece el aporte de oxígeno y nutrientes a la zona tratada.",
+          "Reducción de la inflamación: Ayuda a drenar edemas y disminuir la hinchazón.",
+          "Relajación muscular profunda: Ideal para contracturas, espasmos y tensiones crónicas.",
+          "Compatible con otras técnicas: Se combina eficazmente con terapia manual, ejercicio terapéutico y electroterapia.",
+        ],
+      },
+      {
+        title: "¿Qué dolencias tratamos con diatermia?",
+        paragraphs: [
+          "En Rouco Fisioterapia, utilizamos la diatermia para tratar una amplia variedad de patologías:",
+        ],
+        bullets: [
+          "Tendinopatías: Tendinitis de hombro, codo de tenista, aquiles y rotuliana.",
+          "Lesiones musculares: Contracturas, roturas fibrilares y sobrecargas.",
+          "Dolor articular: Artrosis de rodilla, cadera y columna vertebral.",
+          "Lesiones ligamentosas: Esguinces y distensiones.",
+          "Dolor de espalda: Cervicalgias, lumbalgias y dorsalgias.",
+          "Recuperación postquirúrgica: Aceleración de la rehabilitación tras intervenciones.",
+        ],
+      },
+      {
+        title: "¿Cómo se realiza una sesión de diatermia?",
+        paragraphs: [
+          "La sesión comienza con una valoración del fisioterapeuta para identificar la zona a tratar y seleccionar la modalidad adecuada (capacitiva o resistiva). Se aplica un gel conductor sobre la piel y se utiliza un electrodo que el fisioterapeuta desplaza sobre la zona afectada.",
+          "El paciente siente una agradable sensación de calor profundo durante el tratamiento. Cada sesión dura aproximadamente entre 15 y 30 minutos, y suele combinarse con otras técnicas para maximizar los resultados.",
+        ],
+      },
+      {
+        title: "Recupera tu bienestar con diatermia en Rouco Fisioterapia",
+        paragraphs: [
+          "No dejes que el dolor limite tu vida. En Rouco Fisioterapia, contamos con tecnología de última generación y un equipo de profesionales cualificados. Contacta con nosotros y descubre cómo la diatermia puede ayudarte en tu recuperación.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "¿La diatermia es dolorosa?",
+        answer: "No. La mayoría de pacientes describen la sensación como un calor profundo y agradable. La intensidad se ajusta siempre a la tolerancia de cada persona.",
+      },
+      {
+        question: "¿Cuántas sesiones son necesarias?",
+        answer: "Depende de la patología y la evolución individual, pero en muchos casos se notan mejoras significativas a partir de las primeras 3-5 sesiones.",
+      },
+      {
+        question: "¿Quién puede beneficiarse de la diatermia?",
+        answer: "Personas con dolor muscular o articular, deportistas en recuperación, pacientes postquirúrgicos y personas con patologías crónicas como la artrosis.",
+      },
+      {
+        question: "¿Se puede combinar con otros tratamientos?",
+        answer: "Sí, de hecho se potencia al combinarse con terapia manual, ejercicio terapéutico, punción seca o electroterapia.",
+      },
+      {
+        question: "¿Tiene contraindicaciones?",
+        answer: "Está contraindicada en embarazadas, portadores de marcapasos, zonas con implantes metálicos y sobre tumores. Siempre se realiza una valoración previa.",
+      },
+    ],
+  },
 ];
 
 export const servicesBySlug = Object.fromEntries(

@@ -3,6 +3,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getGalleryImages, type GalleryImage } from "@/lib/gallery";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
+const AUTOPLAY_DELAY = 3000;
+
 const Gallery = () => {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -10,6 +12,14 @@ const Gallery = () => {
   useEffect(() => {
     getGalleryImages().then(setImages).catch(() => setImages([]));
   }, []);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, AUTOPLAY_DELAY);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   const hasImages = images.length > 0;
   const selected = hasImages ? images[currentIndex] : null;

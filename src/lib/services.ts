@@ -888,4 +888,10 @@ export const serviceBlockImagesBySlug: Record<string, ServiceBlockImage[]> = {
     { src: "/images/servicios/eco/03.jpg", alt: "Ecografía - imagen 3" },
     { src: "/images/servicios/eco/04.jpg", alt: "Ecografía - imagen 4" },
   ],
+  diatermia: [
+    { src: "/images/servicios/diatermia/01.jpg", alt: "Diatermia - imagen 1" },
+    { src: "/images/servicios/diatermia/02.jpg", alt: "Diatermia - imagen 2" },
+    { src: "/images/servicios/diatermia/03.jpg", alt: "Diatermia - imagen 3" },
+    { src: "/images/servicios/diatermia/04.jpg", alt: "Diatermia - imagen 4" },
+  ],
 };

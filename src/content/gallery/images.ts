@@ -7,8 +7,6 @@ export const localGalleryImages: GalleryImage[] = [
   { id: "clinica-2", url: "/images/gallery/Clinica2.jpg", alt: "Clínica 2" },
   { id: "clinica-3", url: "/images/gallery/Clinica3.jpg", alt: "Clínica 3" },
   { id: "entrada", url: "/images/gallery/Entrada.jpg", alt: "Entrada" },
-  { id: "grado", url: "/images/gallery/Grado.jpg", alt: "Grado" },
-  { id: "master", url: "/images/gallery/Master.jpg", alt: "Máster" },
   { id: "paciente", url: "/images/gallery/Paciente.jpg", alt: "Paciente" },
   { id: "paciente-2", url: "/images/gallery/Paciente2.jpg", alt: "Paciente 2" },
   { id: "paciente-3", url: "/images/gallery/Paciente3.jpg", alt: "Paciente 3" },

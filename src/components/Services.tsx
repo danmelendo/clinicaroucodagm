@@ -77,6 +77,13 @@ const services: Service[] = [
     href: "/servicios/ecografia",
     image: "https://fisiobcn.eu/wp-content/uploads/2022/04/ECOGRAFIA-EN-FISIOTERAPIA-scaled.jpeg",
   },
+  {
+    icon: Waves,
+    title: "Diatermia",
+    desc: "Radiofrecuencia capacitiva y resistiva para acelerar la recuperación tisular.",
+    href: "/servicios/diatermia",
+    image: "/images/servicios/diatermia/02.jpg",
+  },
 ];
 
 const Services = () => {

@@ -56,45 +56,15 @@ const SobreNosotros = () => {
           </article>
 
           <article className="rounded-xl bg-card border border-border p-8 md:p-10">
-            <h3 className="font-display text-2xl font-bold text-foreground mb-4">Graduados en Fisioterapia</h3>
-            <div className="rounded-xl border border-border bg-background/70 p-4 md:p-5 mb-6">
-              <div className="relative overflow-hidden rounded-lg border border-border bg-card">
-                <img
-                  src={selectedCredential.src}
-                  alt={selectedCredential.alt}
-                  className="w-full h-[260px] md:h-[420px] object-contain bg-background"
-                  loading="lazy"
-                />
-                {credentialsImages.length > 1 && (
-                  <>
-                    <button
-                      type="button"
-                      onMouseDown={(event) => event.preventDefault()}
-                      onClick={goPrevCredential}
-                      className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-black/55 p-2 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.9)] hover:bg-black/70"
-                      aria-label="Titulo anterior"
-                    >
-                      <ChevronLeft className="w-6 h-6" />
-                    </button>
-                    <button
-                      type="button"
-                      onMouseDown={(event) => event.preventDefault()}
-                      onClick={goNextCredential}
-                      className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-black/55 p-2 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.9)] hover:bg-black/70"
-                      aria-label="Titulo siguiente"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-                  </>
-                )}
-              </div>
-              <div className="mt-2 text-right">
-                <p className="text-sm text-muted-foreground">
-                  {credentialIndex + 1} / {credentialsImages.length}
-                </p>
-              </div>
-            </div>
-            <h4 className="font-display text-xl font-semibold text-foreground mt-6 mb-2">Hablemos de ti</h4>
+            <h3 className="font-display text-2xl font-bold text-foreground mb-4">Historia de paciente: Marta</h3>
+            <blockquote className="text-foreground/85 text-base md:text-lg leading-8 mb-4 italic border-l-4 border-primary pl-5">
+              «Llegué a Rouco Fisioterapia con un dolor cervical que me impedía dormir bien y trabajar con normalidad. Desde la primera sesión noté la diferencia: el trato fue cercano, me explicaron con detalle qué me pasaba y diseñaron un plan de tratamiento a mi medida. Combinaron terapia manual, ejercicio terapéutico y electropunción. En pocas semanas, el dolor desapareció casi por completo y aprendí a gestionar las tensiones para evitar recaídas. Me siento como nueva. Totalmente recomendable, la mejor clínica de San Fernando de Henares sin duda.»
+            </blockquote>
+            <p className="text-foreground font-semibold">— Marta, paciente</p>
+          </article>
+
+          <article className="rounded-xl bg-card border border-border p-8 md:p-10">
+            <h4 className="font-display text-xl font-semibold text-foreground mb-2">Hablemos de ti</h4>
             <p className="text-foreground/85 text-base md:text-lg leading-8 mb-4">
               Cuéntanos cuál es tu problema o lesión, y te diremos lo que podemos hacer por ti, sólo haz clic aquí.
             </p>

@@ -27,7 +27,7 @@ const SobreNosotros = () => {
               <li>Ubicación céntrica en San Fernando de Henares.</li>
               <li>Fisioterapeutas titulados y con amplia experiencia.</li>
               <li>Tratamientos manuales, tecnología avanzada y atención individualizada.</li>
-              <li>Más de 6 años de experiencia en el sector.</li>
+              <li>Más de 5 años de experiencia en el sector.</li>
             </ul>
           </article>
 
@@ -40,6 +40,7 @@ const SobreNosotros = () => {
               <li>Punción seca y EPTE (Electrólisis Percutánea Terapéutica).</li>
               <li>Ecografía musculoesquelética para evaluación y seguimiento.</li>
               <li>Dolor de espalda, cervicalgias, ciáticas y más.</li>
+              <li>Esguinces y roturas musculares.</li>
             </ul>
           </article>
 
@@ -49,9 +50,6 @@ const SobreNosotros = () => {
             </h3>
             <p className="text-foreground/85 text-base md:text-lg leading-8 mb-3">
               Estamos aquí para ayudarte. Ya sea que sufras una lesión deportiva, una contractura muscular o un problema crónico, diseñaremos un plan de tratamiento a tu medida.
-            </p>
-            <p className="text-primary font-semibold text-base md:text-lg leading-8">
-              Primera consulta + valoración gratuita.
             </p>
           </article>
 

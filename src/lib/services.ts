@@ -906,6 +906,156 @@ export const servicesCatalog: ServiceDetail[] = [
       },
     ],
   },
+  {
+    slug: "drenaje-linfatico",
+    title: "Drenaje linfático",
+    cardDescription: "Técnica manual suave para reducir inflamación y mejorar la circulación.",
+    intro:
+      "El drenaje linfático es una técnica manual suave que estimula el sistema linfático para favorecer la eliminación de líquidos y mejorar la circulación, ayudando a reducir la inflamación y la sensación de pesadez. En Rouco Fisioterapia lo aplicamos de forma individualizada tras una valoración previa.",
+    ctaLabel: "RESERVA TU CITA",
+    sections: [
+      {
+        title: "¿Qué es el drenaje linfático?",
+        paragraphs: [
+          "El drenaje linfático manual es una técnica de fisioterapia que utiliza maniobras lentas y rítmicas para estimular el flujo de la linfa. Su objetivo es mejorar la circulación, reducir la retención de líquidos y ayudar a que los tejidos se recuperen de forma más eficiente.",
+          "Es un tratamiento indoloro y muy suave, especialmente indicado cuando buscamos disminuir la inflamación y favorecer la recuperación tras procesos agudos o postquirúrgicos.",
+        ],
+      },
+      {
+        title: "Beneficios principales",
+        bullets: [
+          "Reducción de edemas y sensación de pesadez.",
+          "Mejora de la circulación linfática y venosa.",
+          "Disminución de la inflamación en tejidos blandos.",
+          "Favorece la recuperación tras lesiones o intervenciones.",
+          "Aporta sensación de relajación y bienestar general.",
+        ],
+      },
+      {
+        title: "¿Para quién está indicado?",
+        paragraphs: [
+          "Tras una valoración individual, el drenaje linfático puede ser útil en diferentes situaciones:",
+        ],
+        bullets: [
+          "Edemas y retención de líquidos.",
+          "Procesos postquirúrgicos o postraumáticos.",
+          "Hematomas y cicatrices con inflamación.",
+          "Sensación de piernas cansadas o pesadas.",
+          "Procesos inflamatorios que requieren apoyo circulatorio.",
+        ],
+      },
+      {
+        title: "¿Cómo es una sesión?",
+        paragraphs: [
+          "La sesión comienza con una valoración para identificar las zonas de mayor acumulación de líquidos. El tratamiento se realiza con maniobras suaves, lentas y dirigidas, siguiendo el recorrido natural del sistema linfático.",
+          "La duración y frecuencia se adaptan a cada caso. En muchas ocasiones se combina con otras técnicas de fisioterapia para potenciar los resultados.",
+        ],
+      },
+      {
+        title: "Recupera ligereza con drenaje linfático",
+        paragraphs: [
+          "Si notas hinchazón, pesadez o necesitas mejorar la recuperación de una lesión, te ayudamos con un plan de tratamiento personalizado. Contacta con Rouco Fisioterapia y reserva tu cita.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "¿El drenaje linfático es doloroso?",
+        answer: "No. Es una técnica muy suave y generalmente agradable, sin dolor.",
+      },
+      {
+        question: "¿Cuántas sesiones necesito?",
+        answer: "Depende del objetivo y de la evolución de cada paciente. Tras la valoración te indicaremos la pauta recomendada.",
+      },
+      {
+        question: "¿Se puede combinar con otros tratamientos?",
+        answer: "Sí, suele combinarse con terapia manual, ejercicio terapéutico o tratamientos de recuperación postquirúrgica.",
+      },
+      {
+        question: "¿Cuánto dura una sesión?",
+        answer: "Normalmente entre 30 y 60 minutos, según la zona y el objetivo del tratamiento.",
+      },
+      {
+        question: "¿Es adecuado para piernas cansadas?",
+        answer: "Sí, ayuda a reducir la sensación de pesadez y a mejorar la circulación en las extremidades.",
+      },
+    ],
+  },
+  {
+    slug: "pilates-terapeutico",
+    title: "Clases de Pilates terapéutico",
+    cardDescription: "Ejercicio guiado para mejorar fuerza, control y postura.",
+    intro:
+      "Las clases de pilates terapéutico combinan control del movimiento, respiración y trabajo de core para mejorar la postura, la movilidad y prevenir lesiones. En Rouco Fisioterapia adaptamos cada sesión a tu nivel y necesidades.",
+    ctaLabel: "RESERVA TU CITA",
+    sections: [
+      {
+        title: "¿Qué es el pilates terapéutico?",
+        paragraphs: [
+          "El pilates terapéutico es una modalidad de ejercicio guiado que prioriza la postura, la respiración y el control del movimiento. Se enfoca en fortalecer la musculatura profunda y mejorar la estabilidad, con un enfoque seguro y adaptado.",
+          "A diferencia del pilates convencional, aquí cada ejercicio se ajusta a la condición física y a las posibles limitaciones del paciente.",
+        ],
+      },
+      {
+        title: "Beneficios del pilates terapéutico",
+        bullets: [
+          "Mejora de la postura y del control corporal.",
+          "Fortalecimiento del core y la musculatura estabilizadora.",
+          "Incremento de la movilidad y flexibilidad.",
+          "Prevención de lesiones y recaídas.",
+          "Reducción del dolor asociado a sobrecargas musculares.",
+        ],
+      },
+      {
+        title: "¿Qué trabajamos en las clases?",
+        paragraphs: [
+          "El programa se adapta a cada persona, pero suele incluir:",
+        ],
+        bullets: [
+          "Estabilidad lumbopélvica y control de la columna.",
+          "Movilidad de caderas y hombros.",
+          "Fortalecimiento de glúteos, abdomen y espalda.",
+          "Ejercicios de equilibrio y coordinación.",
+          "Trabajo respiratorio y conciencia corporal.",
+        ],
+      },
+      {
+        title: "¿Cómo es una clase?",
+        paragraphs: [
+          "Las sesiones son guiadas por fisioterapeutas, en grupos reducidos, y con material específico (colchonetas, bandas elásticas, pelotas y otros accesorios). Se comienza con una activación suave y se progresa hacia ejercicios de fuerza y control.",
+          "La intensidad se adapta en todo momento para garantizar una práctica segura y efectiva.",
+        ],
+      },
+      {
+        title: "Empieza tu pilates terapéutico",
+        paragraphs: [
+          "Si buscas mejorar tu postura, fortalecer tu cuerpo y prevenir lesiones, te ayudamos a crear un plan de ejercicio a medida. Contacta con Rouco Fisioterapia y reserva tu plaza.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "¿Necesito experiencia previa en pilates?",
+        answer: "No. Las clases están adaptadas a todos los niveles y empezamos desde lo básico.",
+      },
+      {
+        question: "¿Cuántas personas hay por clase?",
+        answer: "Trabajamos con grupos reducidos para garantizar una atención personalizada.",
+      },
+      {
+        question: "¿Puedo asistir si tengo dolor de espalda?",
+        answer: "Sí, siempre que haya una valoración previa para adaptar los ejercicios a tu caso.",
+      },
+      {
+        question: "¿Qué debo traer a la clase?",
+        answer: "Ropa cómoda y, si lo deseas, una botella de agua. El material lo aporta la clínica.",
+      },
+      {
+        question: "¿Con qué frecuencia se recomienda?",
+        answer: "Lo habitual son 1-2 sesiones semanales, aunque dependerá de tus objetivos.",
+      },
+    ],
+  },
 ];
 
 export const servicesBySlug = Object.fromEntries(
@@ -973,5 +1123,17 @@ export const serviceBlockImagesBySlug: Record<string, ServiceBlockImage[]> = {
     { src: "/images/servicios/diatermia/02.jpg", alt: "Diatermia - imagen 2" },
     { src: "/images/servicios/diatermia/03.jpg", alt: "Diatermia - imagen 3" },
     { src: "/images/servicios/diatermia/04.jpg", alt: "Diatermia - imagen 4" },
+  ],
+  "drenaje-linfatico": [
+    { src: "https://cdn.pixabay.com/photo/2014/02/23/11/34/massage-272822_1280.jpg", alt: "Drenaje linfático - masaje terapéutico" },
+    { src: "https://cdn.pixabay.com/photo/2023/04/25/05/53/health-7949522_1280.jpg", alt: "Drenaje linfático - tratamiento manual" },
+    { src: "https://cdn.pixabay.com/photo/2020/03/24/04/11/spa-4962696_1280.jpg", alt: "Drenaje linfático - cuidado circulatorio" },
+    { src: "https://cdn.pixabay.com/photo/2016/04/13/22/12/hands-1327811_640.jpg", alt: "Drenaje linfático - recuperación suave" },
+  ],
+  "pilates-terapeutico": [
+    { src: "https://cdn.pixabay.com/photo/2016/02/13/18/20/physical-therapy-1198344_1280.jpg", alt: "Pilates terapéutico - sala de ejercicios" },
+    { src: "https://cdn.pixabay.com/photo/2017/04/25/14/01/pilates-2259761_1280.jpg", alt: "Pilates terapéutico - sesión guiada" },
+    { src: "https://cdn.pixabay.com/photo/2014/12/20/19/45/gymnastic-balls-574325_1280.jpg", alt: "Pilates terapéutico - trabajo de core" },
+    { src: "https://cdn.pixabay.com/photo/2018/11/06/23/12/pilates-3799328_1280.jpg", alt: "Pilates terapéutico - entrenamiento funcional" },
   ],
 };

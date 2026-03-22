@@ -20,23 +20,16 @@ const clinicAreas: ClinicArea[] = [
   {
     title: "Salas de Tratamiento",
     text: "Contamos con varias salas de tratamiento completamente equipadas con camillas de alta calidad y el material necesario para realizar terapias efectivas y personalizadas. Cada sala ofrece privacidad y confort para que nuestros pacientes reciban una atención óptima y enfocada en sus necesidades. Nuestro equipo utiliza técnicas avanzadas y adaptadas a cada caso, siempre con el objetivo de mejorar tu bienestar.",
-     photo: "/images/gallery/Sala.jpg",
+     photo: "/images/gallery/Galeria13.jpeg",
     // photoAlt: "Sala de tratamiento",
     photoPlaceholder: "Espacio reservado para fotos de Salas de Tratamiento",
   },
   {
-    title: "Baño Accesible",
-    text: "RoucoFisioterapia dispone de un baño diseñado para cumplir con todas las normativas de accesibilidad, asegurando comodidad y seguridad para todos nuestros pacientes. Espacioso, limpio y bien equipado, el baño está adaptado para personas con movilidad reducida y pensado para cubrir cualquier necesidad que puedan tener durante su estancia.",
-     photo: "/images/gallery/Baño.jpg",
-    // photoAlt: "Baño accesible",
-    photoPlaceholder: "Espacio reservado para fotos de Baño Accesible",
-  },
-  {
-    title: "Sala de Pilates y Gimnasio",
-    text: "En RoucoFisioterapia, ofrecemos una sala de gimnasio diseñada para la práctica de pilates y ejercicios de rehabilitación. Con capacidad para hasta 10 personas, la sala está equipada con todo el material necesario: colchonetas, pelotas, bandas elásticas y otros elementos específicos para las sesiones. Este espacio permite a nuestros pacientes realizar ejercicios guiados en un ambiente seguro y funcional, ideal para fortalecer su salud y bienestar.",
+    title: "Sala de Pilates Terapéutico",
+    text: "En RoucoFisioterapia, ofrecemos una sala de gimnasio diseñada para la práctica de pilates terapéutico y ejercicios de rehabilitación. Con capacidad para hasta 10 personas, la sala está equipada con todo el material necesario: colchonetas, pelotas, bandas elásticas y otros elementos específicos para las sesiones. Este espacio permite a nuestros pacientes realizar ejercicios guiados en un ambiente seguro y funcional, ideal para fortalecer su salud y bienestar.",
      photo: "/images/gallery/Galeria15.jpeg",
-    // photoAlt: "Sala de pilates y gimnasio",
-    photoPlaceholder: "Espacio reservado para fotos de la Sala de Pilates y Gimnasio",
+    // photoAlt: "Sala de pilates terapéutico",
+    photoPlaceholder: "Espacio reservado para fotos de la Sala de Pilates Terapéutico",
   },
 ];
 
@@ -69,7 +62,7 @@ const Therapies = () => {
                   <img
                     src={area.photo}
                     alt={area.photoAlt || area.title}
-                    className="block w-3/5 max-w-full h-auto rounded-xl mx-auto"
+                    className="block w-full md:w-3/5 max-w-full h-auto rounded-xl mx-auto"
                     loading="lazy"
                   />
                 ) : (

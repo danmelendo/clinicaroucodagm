@@ -41,6 +41,14 @@ const Blog = () => {
                   key={post.id}
                   className="rounded-xl bg-card border border-border p-8 hover:shadow-lg transition-shadow"
                 >
+                  {post.featuredImage && (
+                    <img
+                      src={post.featuredImage}
+                      alt={post.title}
+                      className="w-full h-56 md:h-64 object-cover rounded-lg mb-6"
+                      loading="lazy"
+                    />
+                  )}
                   <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3.5 h-3.5" />

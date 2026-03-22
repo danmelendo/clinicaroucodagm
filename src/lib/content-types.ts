@@ -8,6 +8,9 @@ export interface BlogPost {
   date: string;
   metaDescription: string;
   published: boolean;
+  contentFormat?: "markdown" | "html";
+  featuredImage?: string;
+  source?: "local" | "wordpress";
 }
 
 export interface GalleryImage {

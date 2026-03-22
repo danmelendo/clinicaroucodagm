@@ -15,6 +15,41 @@ type Service = {
 
 const services: Service[] = [
   {
+    icon: Hand,
+    title: "Terapia Manual",
+    desc: "Técnicas manuales especializadas para tratar disfunciones.",
+    href: "/servicios/terapia-manual",
+    image: "https://www.clinicamayorantigua.com/wp-content/uploads/2025/01/TERAPIA-MANUAL.jpg",
+  },
+  {
+    icon: MonitorSpeaker,
+    title: "Ecografía",
+    desc: "Diagnóstico por imagen para un tratamiento preciso.",
+    href: "/servicios/ecografia",
+    image: "https://fisiobcn.eu/wp-content/uploads/2022/04/ECOGRAFIA-EN-FISIOTERAPIA-scaled.jpeg",
+  },
+  {
+    icon: Target,
+    title: "Punción Seca",
+    desc: "Tratamiento de puntos gatillo para aliviar contracturas.",
+    href: "/servicios/puncion-seca",
+    image: "https://fernandoarcofisioterapia.com/wp-content/uploads/2025/09/1.jpg",
+  },
+  {
+    icon: Waves,
+    title: "Diatermia",
+    desc: "Radiofrecuencia capacitiva y resistiva para acelerar la recuperación tisular.",
+    href: "/servicios/diatermia",
+    image: "/images/servicios/diatermia/02.jpg",
+  },
+  {
+    icon: Dumbbell,
+    title: "Ejercicio Terapéutico",
+    desc: "Programas de ejercicio para rehabilitación activa.",
+    href: "/servicios/ejercicio-terapeutico",
+    image: "https://clinicaigon.com/wp-content/uploads/2020/04/ejercicios-terapeuticos-fisioterapia.jpg",
+  },
+  {
     icon: Zap,
     title: "Electropunción",
     desc: "Estimulación eléctrica para aliviar el dolor muscular.",
@@ -29,25 +64,11 @@ const services: Service[] = [
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJzqNfX_Fv3VoHVW_stxhDc1lZkyfWW_vPaQ&s"
   },
   {
-    icon: Dumbbell,
-    title: "Ejercicio Terapéutico",
-    desc: "Programas de ejercicio para rehabilitación activa.",
-    href: "/servicios/ejercicio-terapeutico",
-    image: "https://clinicaigon.com/wp-content/uploads/2020/04/ejercicios-terapeuticos-fisioterapia.jpg",
-  },
-  {
-    icon: Hand,
-    title: "Terapia Manual",
-    desc: "Técnicas manuales especializadas para tratar disfunciones.",
-    href: "/servicios/terapia-manual",
-    image: "https://www.clinicamayorantigua.com/wp-content/uploads/2025/01/TERAPIA-MANUAL.jpg",
-  },
-  {
-    icon: Target,
-    title: "Punción Seca",
-    desc: "Tratamiento de puntos gatillo para aliviar contracturas.",
-    href: "/servicios/puncion-seca",
-    image: "https://fernandoarcofisioterapia.com/wp-content/uploads/2025/09/1.jpg",
+    icon: Waves,
+    title: "EPTE",
+    desc: "Electrólisis percutánea para tendinopatías.",
+    href: "/servicios/epte",
+    image: "https://davidgarciacatalina.es/wp-content/uploads/2018/10/Servicio-electrolisis-percutanea-terapeutica-en-clinica-ionclinics.jpg",
   },
   {
     icon: Brain,
@@ -65,24 +86,17 @@ const services: Service[] = [
   },
   {
     icon: Waves,
-    title: "EPTE",
-    desc: "Electrólisis percutánea para tendinopatías.",
-    href: "/servicios/epte",
-    image: "https://davidgarciacatalina.es/wp-content/uploads/2018/10/Servicio-electrolisis-percutanea-terapeutica-en-clinica-ionclinics.jpg",
+    title: "Drenaje linfático",
+    desc: "Técnica manual suave para reducir inflamación y mejorar la circulación.",
+    href: "/servicios/drenaje-linfatico",
+    image: "https://cdn.pixabay.com/photo/2015/11/30/21/09/massage-1071130_1280.jpg",
   },
   {
-    icon: MonitorSpeaker,
-    title: "Ecografía",
-    desc: "Diagnóstico por imagen para un tratamiento preciso.",
-    href: "/servicios/ecografia",
-    image: "https://fisiobcn.eu/wp-content/uploads/2022/04/ECOGRAFIA-EN-FISIOTERAPIA-scaled.jpeg",
-  },
-  {
-    icon: Waves,
-    title: "Diatermia",
-    desc: "Radiofrecuencia capacitiva y resistiva para acelerar la recuperación tisular.",
-    href: "/servicios/diatermia",
-    image: "/images/servicios/diatermia/02.jpg",
+    icon: Dumbbell,
+    title: "Clases de Pilates terapéutico",
+    desc: "Sesiones guiadas para mejorar postura, fuerza y control corporal.",
+    href: "/servicios/pilates-terapeutico",
+    image: "https://cdn.pixabay.com/photo/2016/02/13/18/20/physical-therapy-1198344_1280.jpg",
   },
 ];
 

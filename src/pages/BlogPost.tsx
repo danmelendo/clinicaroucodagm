@@ -69,6 +69,8 @@ const BlogPost = () => {
   if (!loaded) return null;
   if (!post || !post.published) return <Navigate to="/blog" replace />;
 
+  const isHtmlContent = post.contentFormat === "html";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -112,7 +114,14 @@ const BlogPost = () => {
             <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-8">
               {post.title}
             </h1>
-            <div className="space-y-4">{renderMarkdown(post.content)}</div>
+            {isHtmlContent ? (
+              <div
+                className="wp-content space-y-4"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+            ) : (
+              <div className="space-y-4">{renderMarkdown(post.content)}</div>
+            )}
           </div>
         </article>
       </main>

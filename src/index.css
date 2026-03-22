@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 15%;
 
-    --primary: 217 91% 50%;
+    --primary: 158 70% 35%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 214 20% 94%;
@@ -24,7 +24,7 @@
     --muted: 210 15% 95%;
     --muted-foreground: 215 10% 45%;
 
-    --accent: 217 80% 42%;
+    --accent: 158 65% 30%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,25 +32,25 @@
 
     --border: 214 20% 90%;
     --input: 214 20% 90%;
-    --ring: 217 91% 50%;
+    --ring: 158 70% 35%;
 
     --radius: 0.75rem;
 
-    --warm-light: 210 20% 98%;
-    --warm-medium: 214 15% 93%;
-    --warm-dark: 215 30% 18%;
-    --terracotta: 217 70% 45%;
-    --amber: 217 91% 55%;
+    --warm-light: 150 20% 98%;
+    --warm-medium: 150 15% 93%;
+    --warm-dark: 160 30% 18%;
+    --terracotta: 158 60% 32%;
+    --amber: 160 70% 40%;
     --cream: 0 0% 100%;
 
     --sidebar-background: 210 20% 98%;
     --sidebar-foreground: 215 25% 15%;
-    --sidebar-primary: 217 91% 50%;
+    --sidebar-primary: 158 70% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 214 20% 94%;
     --sidebar-accent-foreground: 215 25% 20%;
     --sidebar-border: 214 20% 90%;
-    --sidebar-ring: 217 91% 50%;
+    --sidebar-ring: 158 70% 35%;
 
     --font-display: 'Playfair Display', serif;
     --font-body: 'DM Sans', sans-serif;
@@ -63,27 +63,27 @@
     --card-foreground: 210 20% 92%;
     --popover: 215 20% 12%;
     --popover-foreground: 210 20% 92%;
-    --primary: 217 91% 55%;
+    --primary: 158 70% 45%;
     --primary-foreground: 0 0% 100%;
     --secondary: 215 15% 18%;
     --secondary-foreground: 210 20% 92%;
     --muted: 215 12% 18%;
     --muted-foreground: 210 10% 60%;
-    --accent: 217 80% 42%;
+    --accent: 158 55% 35%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 215 12% 22%;
     --input: 215 12% 22%;
-    --ring: 217 91% 55%;
+    --ring: 158 70% 45%;
     --sidebar-background: 215 20% 10%;
     --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 217 91% 55%;
+    --sidebar-primary: 158 70% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 215 12% 18%;
     --sidebar-accent-foreground: 210 20% 92%;
     --sidebar-border: 215 12% 22%;
-    --sidebar-ring: 217 91% 55%;
+    --sidebar-ring: 158 70% 45%;
   }
 }
 
@@ -107,6 +107,33 @@
   }
   .font-body {
     font-family: var(--font-body);
+  }
+}
+
+@layer components {
+  .wp-content h2 {
+    @apply font-display text-2xl md:text-3xl font-bold text-foreground mt-8 mb-4;
+  }
+  .wp-content h3 {
+    @apply font-display text-xl md:text-2xl font-semibold text-foreground mt-6 mb-3;
+  }
+  .wp-content p {
+    @apply text-muted-foreground leading-relaxed;
+  }
+  .wp-content ul {
+    @apply list-disc pl-6 space-y-2 text-muted-foreground;
+  }
+  .wp-content ol {
+    @apply list-decimal pl-6 space-y-2 text-muted-foreground;
+  }
+  .wp-content a {
+    @apply text-primary underline underline-offset-2;
+  }
+  .wp-content img {
+    @apply w-full h-auto rounded-xl my-6;
+  }
+  .wp-content blockquote {
+    @apply border-l-4 border-primary pl-4 italic text-muted-foreground;
   }
 }
 

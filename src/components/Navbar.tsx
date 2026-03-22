@@ -36,7 +36,11 @@ const Navbar = () => {
       </div>
       <nav className="container flex items-center justify-between py-4">
         <a href="/#inicio">
-          <img src={logo} alt="Rouco Fisioterapia" className="h-12 w-auto" />
+          <img
+            src={logo}
+            alt="Rouco Fisioterapia"
+            className="h-12 w-auto bg-transparent mix-blend-multiply"
+          />
         </a>
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (

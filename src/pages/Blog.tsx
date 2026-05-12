@@ -9,7 +9,18 @@ const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    getPublishedPosts().then(setPosts).catch(() => setPosts([]));
+    let cancelled = false;
+    (async () => {
+      try {
+        const published = await getPublishedPosts();
+        if (!cancelled) setPosts(published);
+      } catch {
+        if (!cancelled) setPosts([]);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (

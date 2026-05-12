@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { serviceBlockImagesBySlug, servicesBySlug } from "@/lib/services";
 import { Link, useParams } from "react-router-dom";
-import NotFound from "./NotFound";
+import NotFound from "@/pages/NotFound";
 
 const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();

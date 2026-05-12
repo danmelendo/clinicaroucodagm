@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NotFound from "@/pages/NotFound";
 import { getPostBySlug, type BlogPost as BlogPostModel } from "@/lib/blog";
 
-const renderMarkdown = (content: string) => {
-  return content.split("\n\n").map((block, i) => {
+// ---------------------------------------------------------------------------
+// Markdown renderer (simple)
+// ---------------------------------------------------------------------------
+const boldify = (text: string) =>
+  text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>');
+
+const renderMarkdown = (content: string) =>
+  content.split("\n\n").map((block, i) => {
     if (block.startsWith("## ")) {
       return (
         <h2
@@ -45,30 +52,69 @@ const renderMarkdown = (content: string) => {
       />
     );
   });
-};
 
-const boldify = (text: string) =>
-  text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>');
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
+type LoadState = "loading" | "found" | "not_found";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPostModel | undefined>();
-  const [loaded, setLoaded] = useState(false);
+  const [post, setPost] = useState<BlogPostModel | null>(null);
+  const [state, setState] = useState<LoadState>("loading");
 
   useEffect(() => {
     if (!slug) {
-      setLoaded(true);
+      setState("not_found");
       return;
     }
 
-    getPostBySlug(slug)
-      .then(setPost)
-      .finally(() => setLoaded(true));
+    let cancelled = false;
+    setState("loading");
+
+    (async () => {
+      try {
+        const found = await getPostBySlug(slug);
+        if (cancelled) return;
+
+        if (!found || !found.published) {
+          setState("not_found");
+        } else {
+          setPost(found);
+          setState("found");
+        }
+      } catch {
+        if (!cancelled) setState("not_found");
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [slug]);
 
-  if (!loaded) return null;
-  if (!post || !post.published) return <Navigate to="/blog" replace />;
+  // --- Cargando ---
+  if (state === "loading") {
+    return (
+      <>
+        <Navbar />
+        <main className="min-h-screen bg-background">
+          <div className="container max-w-3xl py-16 md:py-24">
+            <p className="text-muted-foreground">Cargando artículo…</p>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
+  // --- No encontrado: 404 real, sin redirección ---
+  // Google verá el contenido de 404 en la URL correcta → no es soft 404.
+  if (state === "not_found" || !post) {
+    return <NotFound />;
+  }
+
+  // --- Post encontrado ---
   const isHtmlContent = post.contentFormat === "html";
 
   const jsonLd = {
@@ -83,6 +129,7 @@ const BlogPost = () => {
       name: "Rouco Fisioterapia",
       url: "https://roucofisioterapia.es",
     },
+    ...(post.featuredImage && { image: post.featuredImage }),
   };
 
   return (

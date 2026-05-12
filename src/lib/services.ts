@@ -1131,9 +1131,9 @@ export const serviceBlockImagesBySlug: Record<string, ServiceBlockImage[]> = {
     { src: "https://cdn.pixabay.com/photo/2016/04/13/22/12/hands-1327811_640.jpg", alt: "Drenaje linfático - recuperación suave" },
   ],
   "pilates-terapeutico": [
-    { src: "https://cdn.pixabay.com/photo/2016/02/13/18/20/physical-therapy-1198344_1280.jpg", alt: "Pilates terapéutico - sala de ejercicios" },
-    { src: "https://cdn.pixabay.com/photo/2017/04/25/14/01/pilates-2259761_1280.jpg", alt: "Pilates terapéutico - sesión guiada" },
-    { src: "https://cdn.pixabay.com/photo/2014/12/20/19/45/gymnastic-balls-574325_1280.jpg", alt: "Pilates terapéutico - trabajo de core" },
-    { src: "https://cdn.pixabay.com/photo/2018/11/06/23/12/pilates-3799328_1280.jpg", alt: "Pilates terapéutico - entrenamiento funcional" },
+    { src: "/images/gallery/ClasePilates.jpeg", alt: "Pilates terapeutico - clase en Rouco" },
+    { src: "/images/gallery/Galeria1.jpeg", alt: "Pilates terapeutico - ejercicios guiados" },
+    { src: "/images/gallery/Galeria2.jpeg", alt: "Pilates terapeutico - trabajo en grupo" },
+    { src: "/images/gallery/Galeria15.jpeg", alt: "Pilates terapeutico - sala de ejercicios" },
   ],
 };

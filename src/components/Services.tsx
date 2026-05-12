@@ -96,7 +96,7 @@ const services: Service[] = [
     title: "Clases de Pilates terapéutico",
     desc: "Sesiones guiadas para mejorar postura, fuerza y control corporal.",
     href: "/servicios/pilates-terapeutico",
-    image: "https://cdn.pixabay.com/photo/2016/02/13/18/20/physical-therapy-1198344_1280.jpg",
+    image: "/images/gallery/ClasePilates.jpeg",
   },
 ];
 

@@ -1,0 +1,5 @@
+# Netlify: SPA fallback con HTTP 200 para rutas conocidas,
+# y deja que React Router muestre el NotFound con 200 para el resto.
+# Para un 404 HTTP real en rutas desconocidas, activa pre-rendering
+# o usa un adaptador SSR (Vite SSR / Astro / etc.).
+/*    /index.html   200

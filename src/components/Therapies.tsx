@@ -13,7 +13,7 @@ const clinicAreas: ClinicArea[] = [
     title: "Recepción",
     text: "Al entrar en RoucoFisioterapia, te recibimos en un espacio diseñado para ofrecerte comodidad y confianza desde el primer momento. Nuestra recepción está atendida por un equipo amable y profesional, listo para ayudarte con tus citas, resolver tus dudas y asegurarte una experiencia acogedora en cada visita. Aquí encontrarás un ambiente tranquilo y organizado, ideal para que te sientas cómodo desde el primer momento.",
     // Ejemplo de ruta local pendiente:
-     photo: "/images/gallery/Recepcion.jpg",
+     photo: "/images/gallery/Salaesperanuevo.jpeg",
     // photoAlt: "Recepción de la clínica",
     photoPlaceholder: "Espacio reservado para fotos de Recepción",
   },
@@ -80,3 +80,4 @@ const Therapies = () => {
 };
 
 export default Therapies;
+

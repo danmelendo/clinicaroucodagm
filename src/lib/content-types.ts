@@ -10,7 +10,7 @@ export interface BlogPost {
   published: boolean;
   contentFormat?: "markdown" | "html";
   featuredImage?: string;
-  source?: "local" | "wordpress";
+  source?: "local" | "wordpress" | "supabase";
 }
 
 export interface GalleryImage {

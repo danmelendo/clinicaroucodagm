@@ -2,6 +2,72 @@ import type { BlogPost } from "@/lib/content-types";
 
 export const localBlogPosts: BlogPost[] = [
   {
+    id: "7",
+    title: "Fisioterapia en San Fernando de Henares: tratamiento del dolor lumbar, cervical y lesiones mas comunes",
+    slug: "fisioterapia-san-fernando-de-henares-dolor-lumbar-cervical-lesiones",
+    excerpt:
+      "La fisioterapia en San Fernando de Henares es una de las soluciones mas eficaces para tratar el dolor musculoesqueletico. En RoucoFisioterapia tratamos dolor lumbar, cervical y lesiones deportivas.",
+    content: `La fisioterapia en San Fernando de Henares es una de las soluciones mas eficaces para tratar el dolor musculoesqueletico, especialmente en personas que trabajan muchas horas sentadas o realizan actividad fisica intensa.
+
+En RoucoFisioterapia tratamos a diario pacientes con dolor lumbar, dolor cervical y lesiones deportivas, dos de las patologias mas frecuentes en la zona de San Fernando de Henares y alrededores.
+
+## Por que cada vez mas personas en San Fernando de Henares necesitan fisioterapia
+
+El estilo de vida actual en San Fernando de Henares ha incrementado problemas como:
+
+- Trabajo sedentario en oficina
+- Uso prolongado del ordenador
+- Estres fisico y emocional
+- Falta de actividad fisica regular
+- Entrenamientos mal planificados
+
+Esto genera sobrecargas que acaban provocando dolor.
+
+## Problemas mas frecuentes que tratamos en San Fernando de Henares
+
+### 1. Dolor lumbar
+
+Uno de los mas comunes. Se presenta como dolor en la zona baja de la espalda al estar sentado o al agacharse.
+
+### 2. Dolor cervical
+
+Muy habitual en personas que trabajan con pantallas. Produce tension en cuello y trapecios.
+
+### 3. Lesiones deportivas
+
+Especialmente en personas activas de gimnasios o running en San Fernando de Henares.
+
+## Tratamiento de fisioterapia en San Fernando de Henares
+
+El tratamiento en RoucoFisioterapia se basa en:
+
+- Terapia manual avanzada
+- Ejercicio terapeutico individualizado
+- Reeducacion postural
+- Trabajo de fuerza progresiva
+- Prevencion de recaidas
+
+No tratamos solo el dolor, sino la causa del problema.
+
+## Importancia del ejercicio en la recuperacion
+
+El ejercicio es clave para una recuperacion real. Algunos ejemplos:
+
+- Activacion de core
+- Ejercicios de gluteo
+- Movilidad lumbar controlada
+- Estabilidad cervical
+
+## Conclusion
+
+Si buscas fisioterapia en San Fernando de Henares, es importante elegir un tratamiento que no solo elimine el dolor, sino que evite que vuelva a aparecer. Un enfoque activo y personalizado es la clave de la recuperacion.`,
+    category: "Fisioterapia",
+    date: "2026-05-25",
+    metaDescription:
+      "Fisioterapia en San Fernando de Henares para dolor lumbar, cervical y lesiones deportivas. RoucoFisioterapia ofrece tratamiento personalizado y ejercicio terapeutico.",
+    published: true,
+  },
+  {
     id: "5",
     title: "EPTE en fisioterapia: que es y cuando se recomienda",
     slug: "epte-fisioterapia-que-es-cuando-se-recomienda",

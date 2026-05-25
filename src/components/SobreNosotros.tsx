@@ -32,7 +32,7 @@ const SobreNosotros = () => {
           </article>
 
           <article className="rounded-xl bg-card border border-border p-8 md:p-10">
-            <h3 className="font-display text-2xl font-bold text-foreground mb-4">Tratamientos que ofrecemos</h3>
+            <h3 className="font-display text-2xl font-bold text-foreground mb-4">Tratamientos que ofrecemos en San Fernando de Henares</h3>
             <ul className="list-disc pl-6 space-y-2 text-foreground/85 text-base md:text-lg leading-8">
               <li>Fisioterapia traumatológica y deportiva.</li>
               <li>Rehabilitación postoperatoria.</li>
